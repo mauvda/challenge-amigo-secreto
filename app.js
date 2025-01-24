@@ -1,4 +1,5 @@
 let cadastroNomes = [];
+let selecionaLista;
 
 function adicionarAmigo() {
     let padrao = /[^a-zà-ú]/gi;
@@ -7,19 +8,17 @@ function adicionarAmigo() {
     cadastroNomes.push(validaCampo) : 
     alert('Adicione um nome valido');
     for (let i = 0; i < cadastroNomes.length; i++) {
-        document.querySelector('li').remove();
-        listaAmigos();
+        listaAmigos(i);
     }
     document.querySelector('input').value = '';
     document.querySelector('input').placeholder = 'Digite um nome';
     console.log(cadastroNomes);
 }
 
-function listaAmigos() {
+function listaAmigos(index) {
     let listaHtml = document.createElement('li');
-    listaHtml.appendChild(document.createTextNode(document.querySelector('input').value));
+    listaHtml.innerHTML = cadastroNomes[index];
     document.querySelector('ul').appendChild(listaHtml);
-    
 }
 
 function sortearAmigo() {
