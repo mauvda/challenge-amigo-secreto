@@ -1,12 +1,17 @@
 let cadastroNomes = [];
-let selecionaLista;
 
 function adicionarAmigo() {
+    let selecionaLista = document.querySelector('li');
+    console.log(selecionaLista);
     let padrao = /[^a-zà-ú]/gi;
     let validaCampo = document.querySelector('input').value;
     validaCampo != '' && !validaCampo.match(padrao) ? 
     cadastroNomes.push(validaCampo) : 
     alert('Adicione um nome valido');
+    while (selecionaLista) {
+        selecionaLista.remove();
+        selecionaLista = document.querySelector('li');
+    }
     for (let i = 0; i < cadastroNomes.length; i++) {
         listaAmigos(i);
     }
